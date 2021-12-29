@@ -10,6 +10,7 @@ final class CreateFilterCommand extends GeneratorCommand
 {
     protected $signature = 'make:filter {name}';
     protected $description = 'Create a new filter';
+    protected $type = 'Filter';
 
     protected function getStub(): string
     {

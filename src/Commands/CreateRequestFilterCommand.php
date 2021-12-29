@@ -10,10 +10,11 @@ final class CreateRequestFilterCommand extends GeneratorCommand
 {
     protected $signature = 'make:request-filter {name}';
     protected $description = 'Create a new request filter';
+    protected $type = 'RequestFilter';
 
     protected function getStub(): string
     {
-        return __DIR__.'/stubs/RequestFilter.stub';
+        return __DIR__ . '/stubs/RequestFilter.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace): string
