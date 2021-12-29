@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use Closure;
+use Davidoc26\EloquentFilter\Filters\RequestFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+
+class DummyClass extends RequestFilter
+{
+    public function filter(Builder $builder, Request $request, Closure $next): Builder|Closure
+    {
+        //
+
+        return $next($builder);
+    }
+}

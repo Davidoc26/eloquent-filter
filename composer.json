@@ -1,0 +1,38 @@
+{
+  "name": "davidoc26/eloquent-filter",
+  "description": "Simple filter system for building queries",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "David Eritsyan",
+      "email": "dav.eritsyan@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Davidoc26\\EloquentFilter\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.0",
+    "illuminate/support": "^8.0",
+    "illuminate/container": "^8.0",
+    "illuminate/database": "^8.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.23",
+    "phpunit/phpunit": "^9.5"
+  },
+
+  "scripts": {
+    "test": "./vendor/bin/phpunit"
+  }
+}

@@ -1,0 +1,17 @@
+<?php
+
+namespace DummyNamespace;
+
+use Closure;
+use Davidoc26\EloquentFilter\Filters\Filter;
+use Illuminate\Database\Eloquent\Builder;
+
+class DummyClass extends Filter
+{
+    public function filter(Builder $builder, Closure $next): Builder|Closure
+    {
+        //
+
+        return $next($builder);
+    }
+}
