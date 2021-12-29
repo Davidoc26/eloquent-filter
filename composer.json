@@ -31,7 +31,13 @@
     "orchestra/testbench": "^6.23",
     "phpunit/phpunit": "^9.5"
   },
-
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Davidoc26\\EloquentFilter\\ServiceProvider"
+      ]
+    }
+  },
   "scripts": {
     "test": "./vendor/bin/phpunit"
   }
