@@ -25,7 +25,7 @@ Filters can also have their own arguments (using HasArguments trait)
 ## Usage
 
 ### Using Filterable
-To start using filters, you need to use Filterable trait on your model.
+To start using filters, you need to use **Filterable** trait on your model.
 ```php
 use Davidoc26\EloquentFilter\Traits\Filterable;
 
@@ -35,7 +35,7 @@ class Post extends Model
 }
 ```
 
-To define filters, override the getFilters method in your model and return the filters. If no filters have been defined, no filtering will be performed.
+To define filters, override the **getFilters()** method in your model and return the filters. If no filters have been defined, no filtering will be performed.
 ```php
 public function getFilters(): array
 {
