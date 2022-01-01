@@ -29,7 +29,8 @@
   },
   "require-dev": {
     "orchestra/testbench": "^6.23",
-    "phpunit/phpunit": "^9.5"
+    "phpunit/phpunit": "^9.5",
+    "ext-pdo_sqlite": "*"
   },
   "extra": {
     "laravel": {
