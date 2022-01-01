@@ -42,7 +42,7 @@ class FilterableTest extends TestCase
         self::assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testAdditionalFilterProvidedWithLimitRequest()
+    public function testAdditionalFilterProvidedWithLimitRequest(): void
     {
         request()->merge(['limit' => 5]);
 

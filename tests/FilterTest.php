@@ -9,7 +9,7 @@ use Tests\Models\User;
 
 class FilterTest extends TestCase
 {
-    public function testFilterSetsLimitOnBuilder()
+    public function testFilterSetsLimitOnBuilder(): void
     {
         $users = User::withFilters([
             LimitTestFilter::class,

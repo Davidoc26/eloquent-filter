@@ -20,7 +20,7 @@ final class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected static function newFactory()
+    protected static function newFactory(): PostFactory
     {
         return PostFactory::new();
     }
