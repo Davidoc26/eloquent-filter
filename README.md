@@ -20,7 +20,7 @@ There are two types of filters:
 1) Filter
 2) RequestFilter (gives you access to the Request instance)
 
-Filters can also have their own arguments (using HasArguments trait)
+Filters can also [have their own arguments (using HasArguments trait)](https://github.com/Davidoc26/eloquent-filter#filter-arguments)
 
 ## Usage
 
