@@ -30,7 +30,8 @@
   "require-dev": {
     "orchestra/testbench": "^6.23",
     "phpunit/phpunit": "^9.5",
-    "ext-pdo_sqlite": "*"
+    "ext-pdo_sqlite": "*",
+    "vimeo/psalm": "^4.17"
   },
   "extra": {
     "laravel": {
@@ -41,5 +42,10 @@
   },
   "scripts": {
     "test": "./vendor/bin/phpunit"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": false
+    }
   }
 }
