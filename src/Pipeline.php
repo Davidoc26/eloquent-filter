@@ -19,6 +19,9 @@ use Throwable;
 use function array_reduce;
 use function array_reverse;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class Pipeline
 {
     private Builder $builder;
@@ -80,7 +83,7 @@ final class Pipeline
      */
     public function thenReturn(): Builder
     {
-        return $this->then(function ($passable) {
+        return $this->then(function (Builder $passable): Builder {
             return $passable;
         });
     }
@@ -91,7 +94,7 @@ final class Pipeline
      */
     protected function prepareDestination(Closure $destination): Closure
     {
-        return function ($passable) use ($destination) {
+        return function (Builder $passable) use ($destination): Builder {
             try {
                 return $destination($passable);
             } catch (Throwable $e) {
@@ -114,7 +117,7 @@ final class Pipeline
     protected function carry(): Closure
     {
         return function (Closure $stack, ParsedFilter $pipe): Closure {
-            return function (Builder $passable) use ($stack, $pipe): Builder {
+            return function (Builder $passable) use ($stack, $pipe): Builder|Closure {
                 try {
                     $filter = $this->initFilter($pipe->name());
 
@@ -154,12 +157,12 @@ final class Pipeline
     }
 
     /**
-     * @param $passable
+     * @param Builder $passable
      * @param Throwable $e
      * @return mixed
      * @throws Throwable
      */
-    protected function handleException($passable, Throwable $e): mixed
+    protected function handleException(Builder $passable, Throwable $e): mixed
     {
         throw $e;
     }
@@ -174,9 +177,14 @@ final class Pipeline
     private function handleRequestFilter(RequestFilter $filter, Builder $builder, Closure $stack, ?array $args): Builder|Closure
     {
         if ($this->hasArguments($filter)) {
+            /**
+             * @psalm-suppress UndefinedMethod
+             */
             $filter->setArguments($args ?? []);
         }
-
+        /**
+         * @psalm-suppress PossiblyInvalidArgument
+         */
         return $filter->filter($builder, request(), $stack);
     }
 
@@ -190,6 +198,9 @@ final class Pipeline
     private function handleFilter(Filter $filter, Builder $builder, Closure $stack, ?array $args): Builder|Closure
     {
         if ($this->hasArguments($filter)) {
+            /**
+             * @psalm-suppress UndefinedMethod
+             */
             $filter->setArguments($args ?? []);
         }
 

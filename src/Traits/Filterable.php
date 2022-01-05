@@ -11,7 +11,7 @@ use function array_merge;
 
 trait Filterable
 {
-    public function scopeFilter(Builder $builder, $additionalFilters = []): Builder
+    public function scopeFilter(Builder $builder, array $additionalFilters = []): Builder
     {
         $filters = array_merge($this->getFilters(), $additionalFilters);
 

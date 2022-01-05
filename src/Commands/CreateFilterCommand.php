@@ -6,6 +6,9 @@ namespace Davidoc26\EloquentFilter\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class CreateFilterCommand extends GeneratorCommand
 {
     protected $signature = 'make:filter {name}';
