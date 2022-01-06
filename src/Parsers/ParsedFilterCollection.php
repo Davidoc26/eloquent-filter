@@ -7,7 +7,7 @@ namespace Davidoc26\EloquentFilter\Parsers;
 final class ParsedFilterCollection
 {
     /**
-     * @var ParsedFilter[]
+     * @var ParsedFilter[] $filters
      */
     private array $filters;
 
