@@ -1,7 +1,9 @@
 # Eloquent Filters
+
 Simple filter system for building queries
 
 ## Requirements
+
 - PHP 8.0+
 - Laravel 8
 
@@ -13,19 +15,22 @@ composer require davidoc26/eloquent-filter
 
 ## Introduction
 
-Filters allow you to apply restrictions/rules to create a query. 
-It's like middlewares.
+Filters allow you to apply restrictions/rules to create a query. It's like middlewares.
 
 There are two types of filters:
+
 1) Filter
 2) RequestFilter (gives you access to the Request instance)
 
-Filters can also [have their own arguments (using HasArguments trait)](https://github.com/Davidoc26/eloquent-filter#filter-arguments)
+Filters can
+also [have their own arguments (using HasArguments trait)](https://github.com/Davidoc26/eloquent-filter#filter-arguments)
 
 ## Usage
 
 ### Using Filterable
+
 To start using filters, you need to use **Filterable** trait on your model.
+
 ```php
 use Davidoc26\EloquentFilter\Traits\Filterable;
 
@@ -35,7 +40,9 @@ class Post extends Model
 }
 ```
 
-To define filters, override the **getFilters()** method in your model and return the filters. If no filters have been defined, no filtering will be performed.
+To define filters, override the **getFilters()** method in your model and return the filters. If no filters have been
+defined, no filtering will be performed.
+
 ```php
 public function getFilters(): array
 {
@@ -47,6 +54,7 @@ public function getFilters(): array
 ```
 
 ### Creating new filter
+
 To create a basic filter use the command:
 
 ```php artisan make:filter MyFilter```
@@ -54,9 +62,11 @@ To create a basic filter use the command:
 This command will create a filter inside app/Filter directory.
 
 ```php
+use Davidoc26\EloquentFilter\Filters\Filter;
+
 class MyFilter extends Filter
 {
-    public function filter(Builder $builder, Closure $next): Builder|Closure
+    public function filter(Builder $builder, Closure $next): Builder
     {
         //
 
@@ -65,17 +75,20 @@ class MyFilter extends Filter
 }
 ```
 
-### Creating new RequestFilter 
+### Creating new RequestFilter
+
 If you need a filter that has a Request instance available, create a RequestFilter:
 
 ```php artisan make:request-filter MyRequestFilter```
 
 ```php
+use Davidoc26\EloquentFilter\Filters\RequestFilter;
+
 class MyRequestFilter extends RequestFilter
 {
-    public function filter(Builder $builder, Request $request, Closure $next): Builder|Closure
+    public function filter(Builder $builder, Closure $next): Builder
     {
-        //
+        // $this->request
 
         return $next($builder);
     }
@@ -83,6 +96,7 @@ class MyRequestFilter extends RequestFilter
 ```
 
 ### Filter arguments
+
 If you want your filter to have arguments (for example default values) use the **HasArguments trait on your filter**.
 
 To set the arguments, specify them in your model's **getFilters()** method:
@@ -95,17 +109,21 @@ public function getFilters(): array
     ];
 }
 ```
+
 Then, you can get your arguments in your filter
 
 ```php
+use Davidoc26\EloquentFilter\Filters\RequestFilter;
+use Davidoc26\EloquentFilter\Traits\HasArguments;
+
 class LimitFilter extends RequestFilter
 {
     use HasArguments;
 
-    public function filter(Builder $builder, Request $request, Closure $next): Builder|Closure
+    public function filter(Builder $builder, Closure $next): Builder
     {
         $builder->when(
-            $request->input('limit', $this->getArguments()['limit']),
+            $this->request->input('limit', $this->getArguments()['limit']),
             fn(Builder $builder, $limit) => $builder->limit($limit)
         );
         
@@ -117,13 +135,18 @@ class LimitFilter extends RequestFilter
 ```
 
 ## Applying Filters
+
 To apply the filters specified in the **getFilters()** method, use **filter()** on your model.
+
 ```php 
 Post::filter()->get(); 
 // You can also pass additional filters:
 Post::filter([OrderByFilter::class])->get();
 ```
-To use only the filters you need, use the withFilters() method and pass the required filters into it, **this method will ignore the filters that were specified in your model**.
+
+To use only the filters you need, use the withFilters() method and pass the required filters into it, **this method will
+ignore the filters that were specified in your model**.
+
 ```php
 Post::withFilters([
     LoadRelationshipFilter::class,
