@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class OrderByTestFilter extends Filter
 {
-    public function filter(Builder $builder, Closure $next): Builder|Closure
+    public function filter(Builder $builder, Closure $next): Builder
     {
         $builder->orderBy('id','desc');
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DummyClass extends Filter
 {
-    public function filter(Builder $builder, Closure $next): Builder|Closure
+    public function filter(Builder $builder, Closure $next): Builder
     {
         //
 

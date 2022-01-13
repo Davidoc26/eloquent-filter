@@ -5,13 +5,12 @@ namespace DummyNamespace;
 use Closure;
 use Davidoc26\EloquentFilter\Filters\RequestFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 class DummyClass extends RequestFilter
 {
-    public function filter(Builder $builder, Request $request, Closure $next): Builder|Closure
+    public function filter(Builder $builder, Closure $next): Builder
     {
-        //
+        // $this->request
 
         return $next($builder);
     }

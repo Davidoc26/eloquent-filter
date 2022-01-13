@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Davidoc26\EloquentFilter\Filters;
 
-use Closure;
-use Illuminate\Database\Eloquent\Builder;
-
-abstract class Filter
+abstract class Filter implements FilterInterface
 {
-    abstract public function filter(Builder $builder, Closure $next): Builder|Closure;
 }

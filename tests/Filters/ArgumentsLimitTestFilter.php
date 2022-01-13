@@ -13,7 +13,7 @@ final class ArgumentsLimitTestFilter extends Filter
 {
     use HasArguments;
 
-    public function filter(Builder $builder, Closure $next): Builder|Closure
+    public function filter(Builder $builder, Closure $next): Builder
     {
         $limit = $this->getArguments()['limit'];
 
