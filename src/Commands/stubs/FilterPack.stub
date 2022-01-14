@@ -1,0 +1,15 @@
+<?php
+
+namespace DummyNamespace;
+
+use Davidoc26\EloquentFilter\Packs\FilterPack;
+
+class DummyClass extends FilterPack
+{
+    public function getFilters(): array
+    {
+        return [
+            //
+        ];
+    }
+}
