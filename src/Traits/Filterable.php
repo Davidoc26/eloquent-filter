@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Davidoc26\EloquentFilter\Traits;
 
+use Davidoc26\EloquentFilter\Parsers\FilterPackParser;
 use Davidoc26\EloquentFilter\Parsers\FilterParser;
 use Davidoc26\EloquentFilter\Pipeline;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,6 +27,18 @@ trait Filterable
     public function scopeWithFilters(Builder $builder, array $filters): Builder
     {
         $filters = FilterParser::createFromFilters($filters)->parse();
+
+        return (new Pipeline())
+            ->send($builder)
+            ->through($filters)
+            ->thenReturn();
+    }
+
+    public function scopeWithFilterPacks(Builder $builder, array $filterPacks): Builder
+    {
+        $filters = FilterParser::createFromFilters(
+            FilterPackParser::createFromPacks($filterPacks)->parse()
+        )->parse();
 
         return (new Pipeline())
             ->send($builder)
