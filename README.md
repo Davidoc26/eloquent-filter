@@ -167,7 +167,7 @@ Then you can apply filter pack to your model:
 
 ```php 
 Post::withFilterPacks([MyFilterPack::class]);
-// The meaning of the filter pack is that you can use it on any models using Filterable
+// The meaning of the filter pack is that you can use it on any model that uses the Filterable trait
 User::withFilterPacks([MyFilterPack::class, SecondFilterPack::class]);
 ```
 
