@@ -59,7 +59,7 @@ To create a basic filter use the command:
 
 ```php artisan make:filter MyFilter```
 
-This command will create a filter inside app/Filter directory.
+This command will create a filter inside app/Filters directory.
 
 ```php
 use Davidoc26\EloquentFilter\Filters\Filter;
@@ -132,6 +132,43 @@ class LimitFilter extends RequestFilter
     }
 }
 
+```
+
+## Filter Packs
+
+Filter packs allows you to collect several filters in one pack.
+The main purpose of a filter pack is to apply the same filters to models.
+
+To create a filter pack use command:
+
+```php artisan make:filter-pack MyFilterPack```
+
+It will create filter pack in app/Filters/Packs directory:
+
+```php 
+<?php
+
+namespace App\Filters\Packs;
+
+use Davidoc26\EloquentFilter\Packs\FilterPack;
+
+class MyFilterPack extends FilterPack
+{
+    public function getFilters(): array
+    {
+        return [
+            // Define your filters here.
+        ];
+    }
+}
+```
+
+Then you can apply filter pack to your model:
+
+```php 
+Post::withFilterPacks([MyFilterPack::class]);
+// The meaning of the filter pack is that you can use it on any models using Filterable
+User::withFilterPacks([MyFilterPack::class, SecondFilterPack::class]);
 ```
 
 ## Applying Filters
