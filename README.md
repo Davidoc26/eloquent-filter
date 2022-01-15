@@ -136,8 +136,8 @@ class LimitFilter extends RequestFilter
 
 ## Filter Packs
 
-Filter packs allows you to collect several filters in one pack.
-The main purpose of a filter pack is to apply the same filters to models.
+Filter packs allows you to collect several filters in one pack. The main purpose of a filter pack is to apply the same
+filters to models.
 
 To create a filter pack use command:
 
@@ -166,9 +166,12 @@ class MyFilterPack extends FilterPack
 Then you can apply filter pack to your model:
 
 ```php 
-Post::withFilterPacks([MyFilterPack::class]);
+Post::withFilterPacks([MyFilterPack::class])->get();
 // The meaning of the filter pack is that you can use it on any model that uses the Filterable trait
-User::withFilterPacks([MyFilterPack::class, SecondFilterPack::class]);
+User::withFilterPacks([
+    MyFilterPack::class, 
+    SecondFilterPack::class,
+])->get();
 ```
 
 ## Applying Filters
