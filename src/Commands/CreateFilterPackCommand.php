@@ -13,7 +13,7 @@ final class CreateFilterPackCommand extends GeneratorCommand
 {
     protected $signature = 'make:filter-pack {name}';
     protected $description = 'Create a new filter pack';
-    protected $type = 'Filter';
+    protected $type = 'Filter pack';
 
     protected function getStub(): string
     {
