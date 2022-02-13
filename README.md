@@ -2,6 +2,11 @@
 
 Simple filter system for building queries
 
+[![Latest Stable Version](http://poser.pugx.org/davidoc26/eloquent-filter/v)](https://packagist.org/packages/davidoc26/eloquent-filter)
+[![Total Downloads](http://poser.pugx.org/davidoc26/eloquent-filter/downloads)](https://packagist.org/packages/davidoc26/eloquent-filter) 
+[![License](http://poser.pugx.org/davidoc26/eloquent-filter/license)](https://packagist.org/packages/davidoc26/eloquent-filter) 
+[![PHP Version Require](http://poser.pugx.org/davidoc26/eloquent-filter/require/php)](https://packagist.org/packages/davidoc26/eloquent-filter)
+
 ## Requirements
 
 - PHP 8.0+
