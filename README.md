@@ -115,8 +115,7 @@ public function getFilters(): array
 }
 ```
 
-Then, you can get your arguments in your filter
-
+Then, you can get your arguments in your filter using dynamic properties 
 ```php
 use Davidoc26\EloquentFilter\Filters\RequestFilter;
 use Davidoc26\EloquentFilter\Traits\HasArguments;
@@ -127,8 +126,9 @@ class LimitFilter extends RequestFilter
 
     public function filter(Builder $builder, Closure $next): Builder
     {
+        // If there is no limit in the request, we use the limit specified in the model.
         $builder->when(
-            $this->request->input('limit', $this->getArguments()['limit']),
+            $this->request->input('limit', $this->limit),
             fn(Builder $builder, $limit) => $builder->limit($limit)
         );
         
@@ -138,6 +138,7 @@ class LimitFilter extends RequestFilter
 }
 
 ```
+To see all the arguments you have defined in the model, use the **getArguments()** filter method
 
 ## Filter Packs
 
