@@ -10,7 +10,7 @@ class DummyClass extends RequestFilter
 {
     public function filter(Builder $builder, Closure $next): Builder
     {
-        // $this->request
+//        $this->request
 
         return $next($builder);
     }
