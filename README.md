@@ -10,7 +10,7 @@ Simple filter system for building queries
 ## Requirements
 
 - PHP 8.0+
-- Laravel 8, 9
+- Laravel 8, 9, 10
 
 ## Installation
 
